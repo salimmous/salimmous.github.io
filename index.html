@@ -1,0 +1,1839 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  <script>
+    try {
+      document.querySelector('meta[name="color-scheme"]').content = localStorage.getItem("color-scheme") ?? "light dark";
+    } catch {}
+  </script>
+  <title>Salim Moustanir | Full-Stack-Webentwickler (Laravel, React, TypeScript)</title>
+  <meta name="description" content="Salim Moustanir, Full-Stack-Webentwickler in Köln mit über 5 Jahren Erfahrung in PHP/Laravel, React/TypeScript, MySQL, FinTech-POS und Multi-Tenant-SaaS.">
+  <link rel="canonical" href="https://salimmous.github.io/">
+  <meta property="og:title" content="Salim Moustanir | Full-Stack-Webentwickler">
+  <meta property="og:description" content="Über 5 Jahre Erfahrung in produktiven Webanwendungen, FinTech-Plattformen (10.000+ Transaktionen/Tag) und Multi-Tenant-SaaS. Wohnhaft in Köln, sofort verfügbar.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://salimmous.github.io/">
+  <style>
+    :root {
+      --bg-light: #f7f6f2;
+      --bg-dark: #12151b;
+      --surface-light: #efece6;
+      --surface-dark: #1a1f28;
+      --ink-light: #16181d;
+      --ink-dark: #f1f3f7;
+      --muted-light: #434956;
+      --muted-dark: #b4bccb;
+      --rule-light: #cfc9be;
+      --rule-dark: #2c3442;
+      --control-border-light: #686e7a;
+      --control-border-dark: #808a9e;
+      --accent-light: #0a584d;
+      --accent-dark: #5ad2be;
+      --accent-ink-light: #ffffff;
+      --accent-ink-dark: #08201c;
+
+      --bg: var(--bg-light);
+      --surface: var(--surface-light);
+      --ink: var(--ink-light);
+      --muted: var(--muted-light);
+      --rule: var(--rule-light);
+      --control-border: var(--control-border-light);
+      --accent: var(--accent-light);
+      --accent-ink: var(--accent-ink-light);
+
+      color-scheme: light dark;
+      accent-color: var(--accent);
+
+      --font-serif: Charter, "Bitstream Charter", "Iowan Old Style", "Palatino Linotype", Georgia, serif;
+      --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      --font-mono: ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+
+      --space-xs: 0.5rem;
+      --space-sm: 0.875rem;
+      --space-md: 1.5rem;
+      --space-lg: clamp(2rem, 4vw, 3.25rem);
+      --space-xl: clamp(2.75rem, 6vw, 5rem);
+      --radius-sm: 4px;
+      --radius-md: 6px;
+      --max-w: 72rem;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: var(--bg-dark);
+        --surface: var(--surface-dark);
+        --ink: var(--ink-dark);
+        --muted: var(--muted-dark);
+        --rule: var(--rule-dark);
+        --control-border: var(--control-border-dark);
+        --accent: var(--accent-dark);
+        --accent-ink: var(--accent-ink-dark);
+      }
+    }
+
+    :root:has(> head > meta[name="color-scheme"][content="dark"]) {
+      color-scheme: dark;
+      --bg: var(--bg-dark);
+      --surface: var(--surface-dark);
+      --ink: var(--ink-dark);
+      --muted: var(--muted-dark);
+      --rule: var(--rule-dark);
+      --control-border: var(--control-border-dark);
+      --accent: var(--accent-dark);
+      --accent-ink: var(--accent-ink-dark);
+    }
+
+    :root:has(> head > meta[name="color-scheme"][content="light"]) {
+      color-scheme: light;
+      --bg: var(--bg-light);
+      --surface: var(--surface-light);
+      --ink: var(--ink-light);
+      --muted: var(--muted-light);
+      --rule: var(--rule-light);
+      --control-border: var(--control-border-light);
+      --accent: var(--accent-light);
+      --accent-ink: var(--accent-ink-light);
+    }
+
+    @supports (color: light-dark(white, black)) {
+      :root {
+        --bg: light-dark(var(--bg-light), var(--bg-dark));
+        --surface: light-dark(var(--surface-light), var(--surface-dark));
+        --ink: light-dark(var(--ink-light), var(--ink-dark));
+        --muted: light-dark(var(--muted-light), var(--muted-dark));
+        --rule: light-dark(var(--rule-light), var(--rule-dark));
+        --control-border: light-dark(var(--control-border-light), var(--control-border-dark));
+        --accent: light-dark(var(--accent-light), var(--accent-dark));
+        --accent-ink: light-dark(var(--accent-ink-light), var(--accent-ink-dark));
+      }
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-padding-block-start: 5rem;
+      background-color: var(--bg);
+      color: var(--ink);
+      font-family: var(--font-sans);
+      font-size: 100%;
+      line-height: 1.6;
+      -webkit-text-size-adjust: 100%;
+    }
+
+    @media (prefers-reduced-motion: no-preference) {
+      html {
+        scroll-behavior: smooth;
+      }
+    }
+
+    body {
+      margin: 0;
+      background-color: var(--bg);
+      color: var(--ink);
+      overflow-x: clip;
+      hyphens: auto;
+      overflow-wrap: anywhere;
+    }
+
+    html[data-lang="de"] [data-en],
+    html[data-lang="en"] [data-de] {
+      display: none !important;
+    }
+
+    .sr-only {
+      position: absolute;
+      inset-inline-start: 0;
+      inline-size: 1px;
+      block-size: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip-path: inset(50%);
+      white-space: nowrap;
+      border: 0;
+    }
+
+    .skip-link {
+      position: absolute;
+      inset-block-start: -100px;
+      inset-inline-start: 1rem;
+      z-index: 1000;
+      padding: 0.75rem 1.125rem;
+      min-block-size: 44px;
+      background: var(--accent);
+      color: var(--accent-ink);
+      font-weight: 600;
+      text-decoration: none;
+      border-radius: var(--radius-sm);
+    }
+
+    .skip-link:focus {
+      inset-block-start: 0.75rem;
+    }
+
+    :focus-visible {
+      outline: 3px solid var(--accent);
+      outline-offset: 3px;
+    }
+
+    a {
+      color: var(--accent);
+      text-underline-offset: 0.2em;
+      text-decoration-thickness: 1.5px;
+    }
+
+    a:hover {
+      text-decoration-thickness: 2.5px;
+    }
+
+    .container {
+      inline-size: min(100% - 2rem, var(--max-w));
+      margin-inline: auto;
+    }
+
+    @media (min-width: 42rem) {
+      .container {
+        inline-size: min(100% - 3rem, var(--max-w));
+      }
+    }
+
+    /* Header & Responsive Navigation (modern-web-guidance: navbar + dark-mode-toggle) */
+    .site-header {
+      position: sticky;
+      inset-block-start: 0;
+      z-index: 50;
+      background-color: var(--bg);
+      border-block-end: 1px solid var(--rule);
+    }
+
+    .site-header.is-measuring,
+    .site-header.is-measuring * {
+      transition: none !important;
+    }
+
+    .header-inner {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.5rem 0.625rem;
+      min-block-size: 4rem;
+      padding-block: 0.375rem;
+    }
+
+    .site-header.is-wide .header-inner,
+    .site-header.is-measuring .header-inner {
+      flex-wrap: nowrap;
+    }
+
+    .site-header.is-wide .header-inner > *,
+    .site-header.is-measuring .header-inner > * {
+      flex-shrink: 0;
+      white-space: nowrap;
+    }
+
+    .lead-grid > *,
+    .systems-layout > *,
+    .system-flagship > *,
+    .timeline-row > *,
+    .matrix-grid > *,
+    .contact-grid > *,
+    .gh-grid > * {
+      min-inline-size: 0;
+      overflow-wrap: break-word;
+    }
+
+    .site-logo {
+      font-family: var(--font-serif);
+      font-size: 1.1875rem;
+      font-weight: 700;
+      color: var(--ink);
+      text-decoration: none;
+      min-block-size: 44px;
+      display: inline-flex;
+      align-items: center;
+      padding-inline: 0.25rem;
+    }
+
+    .header-controls {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 0.375rem;
+    }
+
+    .site-nav {
+      display: flex;
+      align-items: center;
+    }
+
+    .btn-control {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.375rem;
+      min-block-size: 44px;
+      min-inline-size: 44px;
+      padding-inline: 0.75rem;
+      background-color: var(--surface);
+      color: var(--ink);
+      border: 1.5px solid var(--control-border);
+      border-radius: var(--radius-sm);
+      font-family: var(--font-sans);
+      font-size: 0.875rem;
+      font-weight: 600;
+      cursor: pointer;
+      text-decoration: none;
+    }
+
+    .btn-control:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    .btn-control:active {
+      transform: translateY(1px);
+    }
+
+    .lang-group {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.375rem;
+    }
+
+    .lang-btn[aria-pressed="true"] {
+      background-color: var(--accent);
+      color: var(--accent-ink);
+      border-color: var(--accent);
+    }
+
+    /* Theme toggle branching via CSS scheme state */
+    .theme-to-light {
+      display: none;
+    }
+    .theme-to-dark {
+      display: inline;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root:not(:has(> head > meta[name="color-scheme"][content="light"])) .theme-to-dark {
+        display: none;
+      }
+      :root:not(:has(> head > meta[name="color-scheme"][content="light"])) .theme-to-light {
+        display: inline;
+      }
+    }
+
+    :root:has(> head > meta[name="color-scheme"][content="dark"]) .theme-to-dark {
+      display: none;
+    }
+    :root:has(> head > meta[name="color-scheme"][content="dark"]) .theme-to-light {
+      display: inline;
+    }
+
+    .site-header .menu-button {
+      anchor-name: --menu-button;
+    }
+
+    .site-header .site-menu {
+      list-style: none;
+      margin: 0;
+      padding: 0.75rem;
+      position: fixed;
+      inset: auto;
+      inset-block-start: 4.5rem;
+      inset-block-start: anchor(--menu-button bottom);
+      inset-inline-end: 1rem;
+      inline-size: min(82dvw, 20rem);
+      max-inline-size: calc(100dvw - 2rem);
+      block-size: fit-content;
+      max-block-size: calc(100dvh - 5.5rem);
+      margin-block-start: 0.375rem;
+      overflow: auto;
+      background-color: var(--surface);
+      color: var(--ink);
+      border: 1.5px solid var(--control-border);
+      border-radius: var(--radius-md);
+    }
+
+    .site-header .site-menu:not(:is(:popover-open, .\:popover-open)) {
+      display: none;
+    }
+
+    .site-header .site-menu:is(:popover-open, .\:popover-open) {
+      display: grid;
+      gap: 0.375rem;
+    }
+
+    .site-menu a {
+      display: inline-flex;
+      align-items: center;
+      min-block-size: 44px;
+      padding-inline: 0.75rem;
+      color: var(--ink);
+      text-decoration: none;
+      font-size: 0.9375rem;
+      font-weight: 500;
+      border-radius: var(--radius-sm);
+    }
+
+    .site-menu a:hover,
+    .site-menu a[aria-current="location"] {
+      color: var(--accent);
+      text-decoration: underline;
+    }
+
+    .site-header.is-wide .menu-button {
+      display: none;
+    }
+
+    .site-header.is-wide .site-menu {
+      position: static;
+      display: flex;
+      align-items: center;
+      gap: 0.375rem;
+      inline-size: auto;
+      max-inline-size: none;
+      block-size: auto;
+      max-block-size: none;
+      overflow: visible;
+      margin: 0;
+      padding: 0;
+      border: 0;
+      background: transparent;
+    }
+
+    .site-header.is-wide .site-menu::backdrop {
+      display: none;
+    }
+
+    /* Section framing */
+    .section {
+      padding-block: var(--space-xl);
+      border-block-end: 1px solid var(--rule);
+    }
+
+    .section-head {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 0.75rem 1.5rem;
+      margin-block-end: var(--space-lg);
+    }
+
+    .spec-index {
+      font-family: var(--font-mono);
+      font-size: 0.875rem;
+      font-weight: 600;
+      color: var(--accent);
+    }
+
+    h1, h2, h3 {
+      font-family: var(--font-serif);
+      color: var(--ink);
+      line-height: 1.2;
+      margin-block: 0;
+    }
+
+    h1 {
+      font-size: clamp(2rem, 4.4vw, 3.35rem);
+      letter-spacing: -0.015em;
+    }
+
+    h2 {
+      font-size: clamp(1.5rem, 2.8vw, 2.15rem);
+      letter-spacing: -0.01em;
+    }
+
+    h3 {
+      font-size: clamp(1.2rem, 2vw, 1.45rem);
+    }
+
+    p {
+      margin-block: 0 1rem;
+      max-inline-size: 66ch;
+    }
+
+    .muted {
+      color: var(--muted);
+    }
+
+    /* Section 01: Asymmetric Editorial Lead */
+    .lead-grid {
+      display: grid;
+      gap: var(--space-lg);
+      align-items: start;
+    }
+
+    @media (min-width: 64rem) {
+      .lead-grid {
+        grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+        gap: 3rem;
+      }
+    }
+
+    .lead-role {
+      font-size: clamp(1.0625rem, 1.8vw, 1.25rem);
+      font-weight: 600;
+      color: var(--muted);
+      margin-block: 0.75rem 1.25rem;
+    }
+
+    .cta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      margin-block-start: 1.5rem;
+    }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      max-inline-size: 100%;
+      min-block-size: 46px;
+      padding: 0.375rem 1.25rem;
+      background-color: var(--accent);
+      color: var(--accent-ink);
+      border: 1.5px solid var(--accent);
+      border-radius: var(--radius-sm);
+      font-family: var(--font-sans);
+      font-size: 0.9375rem;
+      font-weight: 600;
+      text-decoration: none;
+      overflow-wrap: anywhere;
+      cursor: pointer;
+    }
+
+    .btn-primary:hover {
+      opacity: 0.92;
+      text-decoration: none;
+    }
+
+    .fact-sheet {
+      background-color: var(--surface);
+      border: 1px solid var(--rule);
+      border-radius: var(--radius-md);
+      padding: clamp(1.125rem, 2.5vw, 1.625rem);
+    }
+
+    .fact-sheet-title {
+      font-family: var(--font-mono);
+      font-size: 0.875rem;
+      font-weight: 600;
+      color: var(--ink);
+      padding-block-end: 0.75rem;
+      margin-block-end: 0.75rem;
+      border-block-end: 1px solid var(--rule);
+    }
+
+    .fact-list {
+      display: grid;
+      gap: 0.75rem;
+      margin: 0;
+    }
+
+    @media (min-width: 42rem) and (max-width: 63.99rem) {
+      .fact-list {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 1rem 1.5rem;
+      }
+    }
+
+    .fact-item {
+      display: grid;
+      gap: 0.125rem;
+    }
+
+    .fact-item dt {
+      font-size: 0.8125rem;
+      font-weight: 600;
+      color: var(--muted);
+    }
+
+    .fact-item dd {
+      margin: 0;
+      font-size: 0.9375rem;
+      font-weight: 500;
+      color: var(--ink);
+    }
+
+    /* Section 02: Production Systems Dossier + Interactive Filter */
+    .filter-bar {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.75rem 1rem;
+      margin-block-end: 1.75rem;
+      padding: 0.875rem 1rem;
+      background-color: var(--surface);
+      border: 1px solid var(--rule);
+      border-radius: var(--radius-md);
+    }
+
+    .filter-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .chip-btn {
+      min-block-size: 44px;
+      padding-inline: 0.875rem;
+      background-color: var(--bg);
+      color: var(--ink);
+      border: 1.5px solid var(--control-border);
+      border-radius: var(--radius-sm);
+      font-family: var(--font-sans);
+      font-size: 0.875rem;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    .chip-btn[aria-pressed="true"] {
+      background-color: var(--accent);
+      color: var(--accent-ink);
+      border-color: var(--accent);
+    }
+
+    .search-wrap {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      flex: 1 1 15rem;
+      max-inline-size: 22rem;
+    }
+
+    .search-input {
+      inline-size: 100%;
+      min-block-size: 44px;
+      padding-inline: 0.75rem;
+      background-color: var(--bg);
+      color: var(--ink);
+      border: 1.5px solid var(--control-border);
+      border-radius: var(--radius-sm);
+      font-family: var(--font-sans);
+      font-size: 1rem;
+    }
+
+    .search-input::placeholder {
+      color: var(--muted);
+      opacity: 0.85;
+    }
+
+    .systems-layout {
+      display: grid;
+      gap: 1.25rem;
+    }
+
+    @media (min-width: 48rem) {
+      .systems-layout {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 1.5rem;
+      }
+      .system-flagship {
+        grid-column: 1 / -1;
+      }
+    }
+
+    .system-entry {
+      background-color: var(--surface);
+      border: 1px solid var(--rule);
+      border-radius: var(--radius-md);
+      padding: clamp(1.25rem, 2.6vw, 1.875rem);
+      display: grid;
+      align-content: start;
+      gap: 0.875rem;
+    }
+
+    .system-entry[hidden] {
+      display: none !important;
+    }
+
+    @media (min-width: 64rem) {
+      .system-flagship {
+        grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+        gap: 2rem;
+        align-items: start;
+      }
+    }
+
+    .system-top {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 0.5rem 1rem;
+      padding-block-end: 0.625rem;
+      border-block-end: 1px solid var(--rule);
+    }
+
+    .system-metric {
+      font-family: var(--font-mono);
+      font-size: 0.875rem;
+      font-weight: 700;
+      color: var(--accent);
+    }
+
+    .stack-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      list-style: none;
+      padding: 0;
+      margin: 0.25rem 0 0;
+    }
+
+    .stack-list li {
+      font-family: var(--font-mono);
+      font-size: 0.8125rem;
+      padding: 0.2rem 0.55rem;
+      background-color: var(--bg);
+      border: 1px solid var(--rule);
+      border-radius: var(--radius-sm);
+      color: var(--ink);
+    }
+
+    .system-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem 1.25rem;
+      margin-block-start: 0.25rem;
+    }
+
+    .system-links a {
+      display: inline-flex;
+      align-items: center;
+      min-block-size: 44px;
+      font-weight: 600;
+      font-size: 0.9375rem;
+    }
+
+    .state-box {
+      padding: 1.25rem 1.5rem;
+      background-color: var(--surface);
+      border: 1.5px solid var(--control-border);
+      border-radius: var(--radius-md);
+      display: grid;
+      gap: 0.75rem;
+      justify-items: start;
+    }
+
+    .state-box[hidden] {
+      display: none !important;
+    }
+
+    /* Live GitHub Verification Strip */
+    .gh-panel {
+      margin-block-start: 2rem;
+      padding-block-start: 1.5rem;
+      border-block-start: 1px solid var(--rule);
+    }
+
+    .gh-header {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 0.5rem 1rem;
+      margin-block-end: 1rem;
+    }
+
+    .gh-grid {
+      display: grid;
+      gap: 1rem;
+    }
+
+    @media (min-width: 42rem) {
+      .gh-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (min-width: 64rem) {
+      .gh-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+    }
+
+    .gh-grid[hidden] {
+      display: none !important;
+    }
+
+    .gh-repo {
+      padding: 1rem 1.125rem;
+      background-color: var(--surface);
+      border: 1px solid var(--rule);
+      border-radius: var(--radius-sm);
+      display: grid;
+      gap: 0.375rem;
+      align-content: space-between;
+    }
+
+    .gh-repo a {
+      font-family: var(--font-mono);
+      font-size: 0.9375rem;
+      font-weight: 600;
+      min-block-size: 44px;
+      display: inline-flex;
+      align-items: center;
+      word-break: break-word;
+    }
+
+    .gh-meta {
+      font-family: var(--font-mono);
+      font-size: 0.8125rem;
+      color: var(--muted);
+    }
+
+    /* Section 03: Chronological Experience Timeline */
+    .timeline {
+      display: grid;
+      gap: 1.75rem;
+    }
+
+    .timeline-row {
+      display: grid;
+      gap: 0.5rem 2rem;
+      padding-block-end: 1.75rem;
+      border-block-end: 1px solid var(--rule);
+    }
+
+    .timeline-row:last-child {
+      padding-block-end: 0;
+      border-block-end: 0;
+    }
+
+    @media (min-width: 52rem) {
+      .timeline-row {
+        grid-template-columns: minmax(12rem, 4fr) minmax(0, 8fr);
+      }
+    }
+
+    .timeline-period {
+      font-family: var(--font-mono);
+      font-size: 0.875rem;
+      font-weight: 600;
+      color: var(--accent);
+    }
+
+    .timeline-place {
+      font-size: 0.9375rem;
+      color: var(--muted);
+      margin-block-start: 0.25rem;
+    }
+
+    .timeline-points {
+      margin: 0.625rem 0 0;
+      padding-inline-start: 1.25rem;
+      display: grid;
+      gap: 0.375rem;
+    }
+
+    /* Section 04: Technical Matrix & Education (3-state responsive reflow) */
+    .matrix-grid {
+      display: grid;
+      gap: 1.25rem;
+    }
+
+    @media (min-width: 42rem) {
+      .matrix-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (min-width: 64rem) {
+      .matrix-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+    }
+
+    .matrix-block {
+      background-color: var(--surface);
+      border: 1px solid var(--rule);
+      border-radius: var(--radius-md);
+      padding: 1.25rem 1.375rem;
+    }
+
+    .matrix-block h3 {
+      margin-block-end: 0.625rem;
+      font-size: 1.125rem;
+    }
+
+    .matrix-list {
+      margin: 0;
+      padding-inline-start: 1.125rem;
+      display: grid;
+      gap: 0.375rem;
+      font-size: 0.9375rem;
+    }
+
+    /* Section 05: Direct Contact & Single-Row Footer */
+    .contact-grid {
+      display: grid;
+      gap: 1.5rem;
+      align-items: start;
+    }
+
+    @media (min-width: 52rem) {
+      .contact-grid {
+        grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+        gap: 2.5rem;
+      }
+    }
+
+    .contact-channels {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: grid;
+      gap: 0.625rem;
+    }
+
+    .contact-channels a {
+      min-block-size: 44px;
+      max-inline-size: 100%;
+      display: inline-flex;
+      align-items: center;
+      font-weight: 600;
+      overflow-wrap: anywhere;
+    }
+
+    .copy-feedback {
+      font-size: 0.875rem;
+      font-weight: 600;
+      color: var(--accent);
+      min-block-size: 1.5rem;
+      margin-block-start: 0.5rem;
+    }
+
+    .site-footer {
+      padding-block: 1.75rem 2.5rem;
+      font-size: 0.875rem;
+      color: var(--muted);
+    }
+
+    .footer-inner {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 0.75rem 1.5rem;
+    }
+
+    @media (forced-colors: active) {
+      .btn-primary,
+      .chip-btn[aria-pressed="true"],
+      .lang-btn[aria-pressed="true"] {
+        forced-color-adjust: none;
+        background-color: Highlight;
+        color: HighlightText;
+        border-color: Highlight;
+      }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main-content">
+    <span data-de>Zum Hauptinhalt springen</span>
+    <span data-en>Skip to main content</span>
+  </a>
+
+  <header class="site-header" id="site-header">
+    <div class="container header-inner" id="header-inner">
+      <a class="site-logo" href="#profil">Salim Moustanir</a>
+
+      <div class="header-controls">
+        <nav class="site-nav" aria-label="Primary">
+          <button
+            class="btn-control menu-button"
+            id="menu-button"
+            type="button"
+            popovertarget="site-menu"
+            popovertargetaction="toggle"
+            aria-controls="site-menu"
+          >
+            <span data-de>Menü</span>
+            <span data-en>Menu</span>
+          </button>
+
+          <ul id="site-menu" class="site-menu" popover="auto">
+            <li>
+              <a href="#systeme">
+                <span data-de>Systeme</span>
+                <span data-en>Systems</span>
+              </a>
+            </li>
+            <li>
+              <a href="#erfahrung">
+                <span data-de>Erfahrung</span>
+                <span data-en>Experience</span>
+              </a>
+            </li>
+            <li>
+              <a href="#stack">
+                <span data-de>Stack &amp; Ausbildung</span>
+                <span data-en>Stack &amp; Education</span>
+              </a>
+            </li>
+            <li>
+              <a href="#kontakt">
+                <span data-de>Kontakt</span>
+                <span data-en>Contact</span>
+              </a>
+            </li>
+          </ul>
+        </nav>
+
+        <button type="button" class="btn-control" id="lang-toggle">
+          <span data-de>EN<span class="sr-only"> (Switch language to English)</span></span>
+          <span data-en>DE<span class="sr-only"> (Sprache auf Deutsch umstellen)</span></span>
+        </button>
+
+        <button type="button" class="btn-control" id="theme-toggle">
+          <span class="theme-to-dark">
+            <span data-de>Dunkel</span>
+            <span data-en>Dark</span>
+            <span class="sr-only" data-de> (Zu dunklem Design wechseln)</span>
+            <span class="sr-only" data-en> (Switch to dark theme)</span>
+          </span>
+          <span class="theme-to-light">
+            <span data-de>Hell</span>
+            <span data-en>Light</span>
+            <span class="sr-only" data-de> (Zu hellem Design wechseln)</span>
+            <span class="sr-only" data-en> (Switch to light theme)</span>
+          </span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main-content">
+    <!-- 01: Editorial Lead -->
+    <section class="section" id="profil">
+      <div class="container lead-grid">
+        <div>
+          <div class="spec-index">01 / PROFIL</div>
+          <h1>Salim Moustanir</h1>
+          <p class="lead-role">
+            <span data-de>Full-Stack-Webentwickler (PHP/Laravel, React, TypeScript, MySQL) in Köln</span>
+            <span data-en>Full-Stack Web Developer (PHP/Laravel, React, TypeScript, MySQL) in Cologne</span>
+          </p>
+          <p data-de>
+            Über 5 Jahre Berufserfahrung in der Architektur und Umsetzung produktiver Webanwendungen, E-Commerce-Integrationen und mandantenfähiger SaaS-Plattformen. Ich habe unter anderem ein FinTech-POS- und Wallet-System mit über 10.000 Transaktionen pro Tag sowie ein Makler-CRM für über 45 Versicherungsagenturen von Grund auf mitentwickelt und in den Livebetrieb gebracht.
+          </p>
+          <p data-en>
+            More than 5 years of professional experience architecting and shipping production web applications, e-commerce integrations, and multi-tenant SaaS platforms. Systems I have built and run in production include a FinTech POS and wallet platform processing over 10,000 daily transactions and a broker CRM serving 45+ independent insurance agencies.
+          </p>
+          <p data-de>
+            Aktuell entwickle ich interne Kundenmanagement- und Support-Systeme bei der Haustechnik Lai&amp;Men UG in Köln und setze Claude Code, Cursor, n8n und Make täglich für saubere Lieferung und Prozessautomatisierung ein.
+          </p>
+          <p data-en>
+            Currently building internal customer management and support systems at Haustechnik Lai&amp;Men UG in Cologne, using Claude Code, Cursor, n8n, and Make daily for software delivery and workflow automation.
+          </p>
+
+          <div class="cta-row">
+            <a class="btn-primary" href="mailto:salim.moustanir@gmail.com">
+              <span data-de>E-Mail schreiben</span>
+              <span data-en>Send email</span>
+            </a>
+            <a class="btn-control" href="https://github.com/salimmous" target="_blank" rel="noopener noreferrer">
+              <span>GitHub (salimmous)</span>
+            </a>
+            <a class="btn-control" href="https://www.linkedin.com/in/salimmoustanir" target="_blank" rel="noopener noreferrer">
+              <span>LinkedIn</span>
+            </a>
+          </div>
+        </div>
+
+        <aside class="fact-sheet" aria-labelledby="facts-heading">
+          <div class="fact-sheet-title" id="facts-heading">
+            <span data-de>ECKDATEN</span>
+            <span data-en>KEY FACTS</span>
+          </div>
+          <dl class="fact-list">
+            <div class="fact-item">
+              <dt data-de>Standort &amp; Status</dt>
+              <dt data-en>Location &amp; Availability</dt>
+              <dd data-de>Köln, Deutschland · Sofort verfügbar</dd>
+              <dd data-en>Cologne, Germany · Immediately available</dd>
+            </div>
+            <div class="fact-item">
+              <dt data-de>Kern-Stack</dt>
+              <dt data-en>Core Stack</dt>
+              <dd>PHP, Laravel, Livewire, React, TypeScript, Next.js, Node.js, MySQL</dd>
+            </div>
+            <div class="fact-item">
+              <dt data-de>E-Commerce &amp; CMS</dt>
+              <dt data-en>E-Commerce &amp; CMS</dt>
+              <dd data-de>Shopify-APIs &amp; Webhooks, WordPress, WooCommerce</dd>
+              <dd data-en>Shopify APIs &amp; Webhooks, WordPress, WooCommerce</dd>
+            </div>
+            <div class="fact-item">
+              <dt data-de>KI &amp; Automatisierung</dt>
+              <dt data-en>AI &amp; Automation</dt>
+              <dd>Claude Code, Cursor, Claude API, n8n, Make</dd>
+            </div>
+            <div class="fact-item">
+              <dt data-de>Auszeichnung</dt>
+              <dt data-en>Recognition</dt>
+              <dd data-de>Finalist (Top 5 von 65 Teams), Cursor Hackathon Heilbronn (03/2026)</dd>
+              <dd data-en>Finalist (Top 5 of 65 teams), Cursor Hackathon Heilbronn (03/2026)</dd>
+            </div>
+            <div class="fact-item">
+              <dt data-de>Sprachen</dt>
+              <dt data-en>Languages</dt>
+              <dd data-de>Arabisch (Muttersprache), Englisch (sehr gut), Französisch (gut), Deutsch (A2)</dd>
+              <dd data-en>Arabic (native), English (fluent), French (good), German (A2)</dd>
+            </div>
+          </dl>
+        </aside>
+      </div>
+    </section>
+
+    <!-- 02: Production Systems & Open Source -->
+    <section class="section" id="systeme">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <div class="spec-index">02 / PRODUKTIVE SYSTEME</div>
+            <h2 data-de>Ausgewählte Plattformen &amp; Open Source</h2>
+            <h2 data-en>Selected Production Platforms &amp; Open Source</h2>
+          </div>
+          <p class="muted" style="margin:0" data-de>Fünf reale Systeme mit dokumentiertem Produktionsumfang.</p>
+          <p class="muted" style="margin:0" data-en>Five shipped systems with documented production scope.</p>
+        </div>
+
+        <div class="filter-bar">
+          <div class="filter-chips" role="group" aria-label="Stack Filter">
+            <button type="button" class="chip-btn" data-filter="all" aria-pressed="true">
+              <span data-de>Alle (5)</span>
+              <span data-en>All (5)</span>
+            </button>
+            <button type="button" class="chip-btn" data-filter="laravel" aria-pressed="false">Laravel / PHP</button>
+            <button type="button" class="chip-btn" data-filter="react" aria-pressed="false">React / TypeScript</button>
+            <button type="button" class="chip-btn" data-filter="ecommerce" aria-pressed="false">APIs &amp; E-Commerce</button>
+            <button type="button" class="chip-btn" data-filter="swift" aria-pressed="false">Swift / macOS</button>
+          </div>
+
+          <div class="search-wrap">
+            <label for="system-search" class="sr-only">
+              <span data-de>Systeme nach Technologie durchsuchen</span>
+              <span data-en>Filter systems by technology</span>
+            </label>
+            <input
+              id="system-search"
+              class="search-input"
+              type="search"
+              autocomplete="off"
+              placeholder="Laravel, MySQL, Webhook, Swift..."
+            >
+          </div>
+        </div>
+
+        <div class="systems-layout" id="systems-list">
+          <!-- Flagship 02.1: RaqmiCash -->
+          <article class="system-entry system-flagship" data-tags="laravel react ecommerce" data-keywords="raqmicash fintech pos wallet laravel react typescript mysql cmi payment">
+            <div>
+              <div class="system-top">
+                <h3>RaqmiCash</h3>
+                <span class="system-metric">
+                  <span data-de>10.000+ Transaktionen / Tag</span>
+                  <span data-en>10,000+ transactions / day</span>
+                </span>
+              </div>
+              <p data-de>
+                FinTech-POS- und Digital-Wallet-Plattform, entwickelt als Gründer und Lead Developer von SAWTT (Software-Studio in Casablanca) gemeinsam mit dem CEO des Projekts von der Systemarchitektur bis zum produktiven Livebetrieb.
+              </p>
+              <p data-en>
+                FinTech POS and digital wallet platform built from initial system architecture to live production as Founder and Lead Developer at SAWTT (software studio in Casablanca) in direct partnership with the project CEO.
+              </p>
+              <div class="system-links">
+                <a href="https://github.com/salimmous/RaqmiCash-Showcase" target="_blank" rel="noopener noreferrer">
+                  <span data-de>Architektur &amp; Repository auf GitHub</span>
+                  <span data-en>Architecture &amp; repository on GitHub</span>
+                </a>
+              </div>
+            </div>
+            <div>
+              <p class="muted" data-de>
+                Schwerpunkte der Umsetzung: hochfrequente Transaktionsverarbeitung über MySQL und Laravel, direkte Anbindung des marokkanischen Zahlungsgateways CMI sowie reaktive Kassen- und Verwaltungsoberflächen in React und TypeScript.
+              </p>
+              <p class="muted" data-en>
+                Engineering scope: high-volume transaction ledgering in Laravel and MySQL, CMI payment gateway integration, reconciliation workflows, and operator interfaces built in React and TypeScript.
+              </p>
+              <ul class="stack-list" aria-label="RaqmiCash Stack">
+                <li>PHP</li>
+                <li>Laravel</li>
+                <li>React</li>
+                <li>TypeScript</li>
+                <li>MySQL</li>
+                <li>CMI Gateway</li>
+              </ul>
+            </div>
+          </article>
+
+          <!-- 02.2: Insurio -->
+          <article class="system-entry" data-tags="laravel" data-keywords="insurio saas crm multi-tenant laravel livewire mysql insurance versicherung">
+            <div class="system-top">
+              <h3>Insurio</h3>
+              <span class="system-metric">
+                <span data-de>45+ Versicherungsagenturen</span>
+                <span data-en>45+ insurance agencies</span>
+              </span>
+            </div>
+            <p data-de>
+              Mandantenfähiges SaaS-CRM für unabhängige Versicherungsmakler (entwickelt als Gründer und Lead Developer von SAWTT). Deckt Kunden- und Policenverwaltung sowie automatisierte Provisionsabrechnung im täglichen Betrieb ab.
+            </p>
+            <p data-en>
+              Multi-tenant SaaS CRM for independent insurance brokers (built as Founder and Lead Developer at SAWTT). Manages client records, policy lifecycles, and automated commission settlement across 45+ agencies.
+            </p>
+            <ul class="stack-list" aria-label="Insurio Stack">
+              <li>Laravel</li>
+              <li>Livewire</li>
+              <li>MySQL</li>
+              <li>Multi-Tenant SaaS</li>
+            </ul>
+          </article>
+
+          <!-- 02.3: Nation Sportive Coaching System -->
+          <article class="system-entry" data-tags="react" data-keywords="nation sportive city club unique fitness ufc gym react coaching frontend performance">
+            <div class="system-top">
+              <h3>Nation Sportive Coaching</h3>
+              <span class="system-metric">
+                <span data-de>30+ Clubs · ~200.000 Kunden</span>
+                <span data-en>30+ clubs · ~200,000 members</span>
+              </span>
+            </div>
+            <p data-de>
+              Konzeption und Entwicklung eines React-basierten Coaching-Systems für City Club, Unique Fitness und UFC GYM, ergänzt durch performanceoptimierte Marken-Websites in Zusammenarbeit mit Marketing und Design.
+            </p>
+            <p data-en>
+              Designed and developed a React coaching platform operating across more than 30 fitness clubs for City Club, Unique Fitness, and UFC GYM, alongside responsive, performance-tuned brand websites.
+            </p>
+            <ul class="stack-list" aria-label="Nation Sportive Stack">
+              <li>React</li>
+              <li>JavaScript</li>
+              <li>TypeScript</li>
+              <li>Responsive UI</li>
+            </ul>
+          </article>
+
+          <!-- 02.4: Shopify-Logistik-Sync -->
+          <article class="system-entry" data-tags="laravel ecommerce" data-keywords="shopify logistik sync webhooks rest api ameex cathedis sendit laravel mysql ecommerce">
+            <div class="system-top">
+              <h3>Shopify-Logistik-Sync</h3>
+              <span class="system-metric">
+                <span data-de>500+ Bestellungen / Tag</span>
+                <span data-en>500+ orders / day</span>
+              </span>
+            </div>
+            <p data-de>
+              Ereignisgesteuerte Webhook-Synchronisation zwischen Shopify-Shops und den Versanddienstleistern Ameex, Cathedis und Sendit. Überträgt über 500 Bestellungen täglich in Echtzeit ohne manuelle Nachbearbeitung.
+            </p>
+            <p data-en>
+              Event-driven webhook bridge connecting Shopify stores with carriers Ameex, Cathedis, and Sendit. Synchronizes 500+ daily orders and tracking updates in real time without manual intervention.
+            </p>
+            <ul class="stack-list" aria-label="Shopify Sync Stack">
+              <li>Laravel</li>
+              <li>REST APIs</li>
+              <li>Webhooks</li>
+              <li>Shopify</li>
+              <li>MySQL</li>
+            </ul>
+          </article>
+
+          <!-- 02.5: Clipboard Manager (macOS) -->
+          <article class="system-entry" data-tags="swift" data-keywords="clipboard manager genius macos swift native open source desktop">
+            <div class="system-top">
+              <h3>Clipboard Manager</h3>
+              <span class="system-metric">macOS · Open Source</span>
+            </div>
+            <p data-de>
+              Nativer Zwischenablage-Manager für macOS in Swift mit automatischer Update-Auslieferung und schnellem Tastaturzugriff für den Entwicklungsalltag.
+            </p>
+            <p data-en>
+              Native macOS clipboard history manager written in Swift with built-in automatic updates and fast keyboard access for daily engineering workflows.
+            </p>
+            <ul class="stack-list" aria-label="Clipboard Manager Stack">
+              <li>Swift</li>
+              <li>macOS</li>
+              <li>Auto-Updates</li>
+            </ul>
+            <div class="system-links">
+              <a href="https://clipboardgenius.app" target="_blank" rel="noopener noreferrer">clipboardgenius.app</a>
+              <a href="https://github.com/salimmous/clipboard-manager" target="_blank" rel="noopener noreferrer">GitHub Source</a>
+            </div>
+          </article>
+        </div>
+
+        <!-- R-27 Empty state for system filter -->
+        <div class="state-box" id="systems-empty" role="status" hidden>
+          <p style="margin:0" data-de>
+            Kein System passt zur aktuellen Auswahl oder Suche. Setzen Sie den Filter zurück, um wieder alle 5 produktiven Projekte anzuzeigen.
+          </p>
+          <p style="margin:0" data-en>
+            No system matches the active category or search query. Reset the filter to display all 5 production projects again.
+          </p>
+          <button type="button" class="btn-control" id="reset-filter-btn">
+            <span data-de>Filter zurücksetzen</span>
+            <span data-en>Reset filter</span>
+          </button>
+        </div>
+
+        <!-- Live GitHub API Strip with Loading / Empty / Error + Retry states (R-27) -->
+        <div class="gh-panel" aria-labelledby="gh-heading">
+          <div class="gh-header">
+            <h3 id="gh-heading">
+              <span data-de>Aktuelle öffentliche Repositories (GitHub Live)</span>
+              <span data-en>Recent Public Repositories (GitHub Live)</span>
+            </h3>
+            <a href="https://github.com/salimmous?tab=repositories" target="_blank" rel="noopener noreferrer">
+              <span data-de>Alle auf github.com/salimmous ansehen</span>
+              <span data-en>View all on github.com/salimmous</span>
+            </a>
+          </div>
+
+          <div class="state-box" id="gh-loading" aria-live="polite">
+            <p style="margin:0" data-de>Öffentliche GitHub-Repositories werden von api.github.com geladen...</p>
+            <p style="margin:0" data-en>Loading public GitHub repositories from api.github.com...</p>
+          </div>
+
+          <div class="state-box" id="gh-empty" role="status" hidden>
+            <p style="margin:0" data-de>Keine öffentlichen Original-Repositories in der aktuellen API-Antwort gefunden. Besuchen Sie github.com/salimmous direkt.</p>
+            <p style="margin:0" data-en>No public source repositories returned in the current API response. Visit github.com/salimmous directly.</p>
+          </div>
+
+          <div class="state-box" id="gh-error" role="alert" hidden>
+            <p style="margin:0" data-de>Die GitHub-API antwortet momentan nicht (Offline oder Rate-Limit). Laden Sie die Liste erneut oder öffnen Sie das GitHub-Profil direkt.</p>
+            <p style="margin:0" data-en>The GitHub API could not be reached right now (offline or rate limit). Retry loading or open the GitHub profile directly.</p>
+            <div class="cta-row" style="margin-block-start:0.25rem">
+              <button type="button" class="btn-control" id="gh-retry">
+                <span data-de>Erneut laden</span>
+                <span data-en>Retry</span>
+              </button>
+              <a class="btn-control" href="https://github.com/salimmous" target="_blank" rel="noopener noreferrer">github.com/salimmous</a>
+            </div>
+          </div>
+
+          <div class="gh-grid" id="gh-grid" hidden></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 03: Chronological Work Experience -->
+    <section class="section" id="erfahrung">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <div class="spec-index">03 / BERUFSERFAHRUNG</div>
+            <h2 data-de>Stationen</h2>
+            <h2 data-en>Work Experience</h2>
+          </div>
+        </div>
+
+        <div class="timeline">
+          <div class="timeline-row">
+            <div>
+              <div class="timeline-period">
+                <span data-de>09/2025 bis heute</span>
+                <span data-en>09/2025 to Present</span>
+              </div>
+              <div class="timeline-place">Haustechnik Lai&amp;Men UG · Köln (Remote)</div>
+            </div>
+            <div>
+              <h3 data-de>Full-Stack-Webentwickler</h3>
+              <h3 data-en>Full-Stack Web Developer</h3>
+              <ul class="timeline-points">
+                <li data-de>Entwicklung und laufende Betreuung der Unternehmenswebsite.</li>
+                <li data-en>Develop and maintain the company website and operational web tools.</li>
+                <li data-de>Aufbau eines zentralen Kundenmanagement-Systems zur strukturierten Übersicht über Kunden und Vorgänge.</li>
+                <li data-en>Built a centralized customer management system tracking client records and active requests.</li>
+                <li data-de>Entwicklung eines internen Support-Systems zur Erfassung und Bearbeitung von Kundenanfragen.</li>
+                <li data-en>Built an internal support ticketing system to capture and resolve customer inquiries.</li>
+                <li data-de>KI-gestützte Softwareentwicklung mit Claude Code und Cursor sowie Prozessautomatisierung mit n8n und Make.</li>
+                <li data-en>Daily AI-assisted development with Claude Code and Cursor plus workflow automation using n8n and Make.</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="timeline-row">
+            <div>
+              <div class="timeline-period">02/2024 - 10/2025</div>
+              <div class="timeline-place">Nation Sportive (City Club, Unique Fitness, UFC GYM) · Casablanca</div>
+            </div>
+            <div>
+              <h3 data-de>Webanwendungsentwickler</h3>
+              <h3 data-en>Web Application Developer</h3>
+              <ul class="timeline-points">
+                <li data-de>Entwicklung responsiver und performanceoptimierter Websites für City Club, Unique Fitness und UFC GYM.</li>
+                <li data-en>Developed responsive, performance-optimized brand websites for City Club, Unique Fitness, and UFC GYM.</li>
+                <li data-de>Konzeption und Entwicklung eines React-Coaching-Systems im Einsatz in über 30 Clubs mit rund 200.000 Kunden.</li>
+                <li data-en>Designed and shipped a React coaching platform deployed across 30+ clubs serving around 200,000 members.</li>
+                <li data-de>Umsetzung neuer Produktfunktionen und UX-Verbesserungen gemeinsam mit Marketing und Design.</li>
+                <li data-en>Delivered new product capabilities and UX improvements alongside marketing and design teams.</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="timeline-row">
+            <div>
+              <div class="timeline-period">01/2022 - 12/2023</div>
+              <div class="timeline-place">Verde · Istanbul (Remote)</div>
+            </div>
+            <div>
+              <h3 data-de>Webentwickler</h3>
+              <h3 data-en>Web Developer</h3>
+              <ul class="timeline-points">
+                <li data-de>Mitentwicklung komplexer Webanwendungen in einem agilen, internationalen Entwicklerteam.</li>
+                <li data-en>Co-developed complex web applications inside an agile international engineering team.</li>
+                <li data-de>Regelmäßige Code-Reviews zur Sicherung von Codequalität und langfristiger Wartbarkeit.</li>
+                <li data-en>Performed regular code reviews to safeguard maintainability and code quality.</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="timeline-row">
+            <div>
+              <div class="timeline-period">01/2021 - 02/2022</div>
+              <div class="timeline-place">Mayar World · Istanbul (Remote)</div>
+            </div>
+            <div>
+              <h3 data-de>Full-Stack-Entwickler &amp; Leitung Webentwicklung</h3>
+              <h3 data-en>Full-Stack Developer &amp; Lead Web Development</h3>
+              <ul class="timeline-points">
+                <li data-de>Entwicklung von Websites für Dienstleistungsunternehmen aus unterschiedlichen Branchen.</li>
+                <li data-en>Built websites and web applications for service companies across multiple industries.</li>
+                <li data-de>Performance-Audits, Ladezeitoptimierung sowie technischer Support und Kundenschulungen.</li>
+                <li data-en>Ran performance audits, load-time optimizations, technical support, and client training sessions.</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="timeline-row">
+            <div>
+              <div class="timeline-period">06/2018 - 09/2021</div>
+              <div class="timeline-place">Bijouterie Safaa · Casablanca</div>
+            </div>
+            <div>
+              <h3 data-de>Digitales Marketing (Teilzeit)</h3>
+              <h3 data-en>Digital Marketing (Part-Time)</h3>
+              <ul class="timeline-points">
+                <li data-de>Betreuung des Onlineauftritts und Umsetzung von SEO-Maßnahmen zur Steigerung der Sichtbarkeit.</li>
+                <li data-en>Managed online presence and executed SEO improvements to increase search visibility.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 04: Technical Matrix, Education & Certifications -->
+    <section class="section" id="stack">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <div class="spec-index">04 / TECHNOLOGIE &amp; AUSBILDUNG</div>
+            <h2 data-de>Technischer Stack &amp; Qualifikationen</h2>
+            <h2 data-en>Technical Stack &amp; Qualifications</h2>
+          </div>
+        </div>
+
+        <div class="matrix-grid">
+          <div class="matrix-block">
+            <h3>Backend &amp; APIs</h3>
+            <ul class="matrix-list">
+              <li>PHP, Laravel, Livewire</li>
+              <li>Node.js</li>
+              <li data-de>REST-APIs, Webhooks &amp; Zahlungsanbindungen (CMI)</li>
+              <li data-en>REST APIs, Webhooks &amp; Payment Gateways (CMI)</li>
+              <li data-de>Mandantenfähige SaaS-Architekturen</li>
+              <li data-en>Multi-tenant SaaS architectures</li>
+            </ul>
+          </div>
+
+          <div class="matrix-block">
+            <h3>Frontend &amp; E-Commerce</h3>
+            <ul class="matrix-list">
+              <li>TypeScript, JavaScript, React, Next.js</li>
+              <li>HTML5, CSS</li>
+              <li>WordPress &amp; WooCommerce (Themes &amp; Plugins)</li>
+              <li data-de>Shopify-Integrationen &amp; Versand-Sync</li>
+              <li data-en>Shopify integrations &amp; carrier sync</li>
+            </ul>
+          </div>
+
+          <div class="matrix-block">
+            <h3 data-de>Datenbanken &amp; KI-Workflows</h3>
+            <h3 data-en>Data &amp; AI Workflows</h3>
+            <ul class="matrix-list">
+              <li>MySQL, Supabase, Firebase</li>
+              <li>Claude Code, Cursor, GitHub Copilot, Claude API</li>
+              <li>n8n, Make</li>
+              <li data-de>Git, Agile/Scrum, Code-Reviews, SEO &amp; Performance</li>
+              <li data-en>Git, Agile/Scrum, Code Reviews, SEO &amp; Performance</li>
+            </ul>
+          </div>
+
+          <div class="matrix-block">
+            <h3 data-de>Berufsausbildung</h3>
+            <h3 data-en>Vocational IT Diploma</h3>
+            <p style="margin:0;font-size:0.9375rem" data-de>
+              Techniker für IT-Wartung, Support und Netzwerke (2-jährige Berufsausbildung: Technicien en Maintenance et Support Informatique et Réseaux), OFPPT, Casablanca (09/2019 - 07/2021).
+            </p>
+            <p style="margin:0;font-size:0.9375rem" data-en>
+              IT Maintenance, Support &amp; Networks Technician (2-year state vocational diploma: Technicien en Maintenance et Support Informatique et Réseaux), OFPPT, Casablanca (09/2019 - 07/2021).
+            </p>
+          </div>
+
+          <div class="matrix-block">
+            <h3 data-de>Zertifizierungen (2018 - 2026)</h3>
+            <h3 data-en>Certifications (2018 - 2026)</h3>
+            <ul class="matrix-list">
+              <li>Anthropic (2026): AI Fluency, Building with the Claude API, Claude Code 101, Claude Code in Action</li>
+              <li>Dubai Future Foundation (2026): One Million Prompters</li>
+              <li>Udemy (2018 - 2021): Full-Stack Web Development, WordPress &amp; WooCommerce</li>
+            </ul>
+          </div>
+
+          <div class="matrix-block">
+            <h3 data-de>Hackathon-Finale</h3>
+            <h3 data-en>Hackathon Finalist</h3>
+            <p style="margin:0;font-size:0.9375rem" data-de>
+              Cursor Hackathon Heilbronn (03/2026): Finalist unter den Top 5 von 65 teilnehmenden Teams.
+            </p>
+            <p style="margin:0;font-size:0.9375rem" data-en>
+              Cursor Hackathon Heilbronn (03/2026): Finalist, placing in the Top 5 out of 65 competing teams.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 05: Direct Contact -->
+    <section class="section" id="kontakt">
+      <div class="container contact-grid">
+        <div>
+          <div class="spec-index">05 / KONTAKT</div>
+          <h2 data-de>Direkter Kontakt</h2>
+          <h2 data-en>Direct Contact</h2>
+          <p data-de>
+            Ich wohne in Köln und bin ab sofort verfügbar für Full-Stack- oder Backend-Rollen (vor Ort in NRW, Hybrid oder Remote in Deutschland und Europa). Schreiben Sie mir direkt per E-Mail oder über LinkedIn.
+          </p>
+          <p data-en>
+            Based in Cologne and immediately available for permanent full-stack or backend engineering roles (on-site in NRW, hybrid, or remote across Germany and Europe). Reach out directly via email or LinkedIn.
+          </p>
+
+          <div class="cta-row">
+            <a class="btn-primary" href="mailto:salim.moustanir@gmail.com">salim.moustanir@gmail.com</a>
+            <button type="button" class="btn-control" id="copy-email-btn">
+              <span data-de>E-Mail-Adresse kopieren</span>
+              <span data-en>Copy email address</span>
+            </button>
+          </div>
+          <div class="copy-feedback" id="copy-feedback" role="status" aria-live="polite"></div>
+        </div>
+
+        <div class="fact-sheet">
+          <div class="fact-sheet-title">
+            <span data-de>VERBINDUNGEN</span>
+            <span data-en>CHANNELS</span>
+          </div>
+          <ul class="contact-channels">
+            <li><a href="mailto:salim.moustanir@gmail.com">salim.moustanir@gmail.com</a></li>
+            <li><a href="tel:+491637147519">+49 163 7147519</a></li>
+            <li><a href="https://www.linkedin.com/in/salimmoustanir" target="_blank" rel="noopener noreferrer">linkedin.com/in/salimmoustanir</a></li>
+            <li><a href="https://github.com/salimmous" target="_blank" rel="noopener noreferrer">github.com/salimmous</a></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <span>Salim Moustanir · Köln, Deutschland</span>
+      <span data-de>Keine Tracking-Skripte, keine externen Schriftarten.</span>
+      <span data-en>Zero tracking scripts, zero third-party font requests.</span>
+    </div>
+  </footer>
+
+  <script type="module">
+    if (!Object.hasOwn(HTMLElement.prototype, "popover")) {
+      import("https://unpkg.com/@oddbird/popover-polyfill@latest/dist/popover.min.js").catch(() => {});
+    }
+
+    const htmlEl = document.documentElement;
+    const metaScheme = document.querySelector('meta[name="color-scheme"]');
+
+    // Language switch (DE default for German market, EN toggle persisted)
+    const langToggle = document.getElementById("lang-toggle");
+    function applyLanguage(lang, persist = false) {
+      const normalized = lang === "en" ? "en" : "de";
+      htmlEl.lang = normalized;
+      htmlEl.dataset.lang = normalized;
+      document.title = normalized === "en"
+        ? "Salim Moustanir | Full-Stack Web Developer (Laravel, React, TypeScript)"
+        : "Salim Moustanir | Full-Stack-Webentwickler (Laravel, React, TypeScript)";
+      if (persist) {
+        try {
+          localStorage.setItem("portfolio-lang", normalized);
+        } catch {}
+      }
+    }
+
+    let initialLang = "de";
+    try {
+      const savedLang = localStorage.getItem("portfolio-lang");
+      const paramLang = new URLSearchParams(window.location.search).get("lang");
+      if (paramLang === "en" || paramLang === "de") {
+        initialLang = paramLang;
+      } else if (savedLang === "en" || savedLang === "de") {
+        initialLang = savedLang;
+      }
+    } catch {}
+    applyLanguage(initialLang, false);
+
+    langToggle?.addEventListener("click", () => {
+      const nextLang = htmlEl.dataset.lang === "en" ? "de" : "en";
+      applyLanguage(nextLang, true);
+    });
+
+    // Two-state dark mode toggle (modern-web-guidance: dark-mode-toggle)
+    const themeBtn = document.getElementById("theme-toggle");
+    const darkMql = window.matchMedia("(prefers-color-scheme: dark)");
+
+    function getStoredScheme() {
+      try {
+        const val = localStorage.getItem("color-scheme");
+        return val === "light" || val === "dark" ? val : null;
+      } catch {
+        return null;
+      }
+    }
+
+    themeBtn?.addEventListener("click", () => {
+      const systemScheme = darkMql.matches ? "dark" : "light";
+      const stored = getStoredScheme();
+      const currentRendered = stored ?? systemScheme;
+      const target = currentRendered === "dark" ? "light" : "dark";
+
+      if (target === systemScheme) {
+        try {
+          localStorage.removeItem("color-scheme");
+        } catch {}
+        metaScheme.content = "light dark";
+      } else {
+        try {
+          localStorage.setItem("color-scheme", target);
+        } catch {}
+        metaScheme.content = target;
+      }
+    });
+
+    window.addEventListener("storage", (event) => {
+      if (event.key === "color-scheme") {
+        metaScheme.content = event.newValue === "light" || event.newValue === "dark" ? event.newValue : "light dark";
+      }
+    });
+
+    // Responsive navbar width measurement (modern-web-guidance: navbar)
+    const header = document.getElementById("site-header");
+    const headerInner = document.getElementById("header-inner");
+    const siteMenu = document.getElementById("site-menu");
+    let lastHeaderWidth = 0;
+
+    function syncNavbarLayout() {
+      if (!header || !headerInner || !siteMenu) return;
+      const currentWidth = headerInner.clientWidth;
+      const wasWide = header.classList.contains("is-wide");
+      if (!wasWide && currentWidth <= lastHeaderWidth && lastHeaderWidth !== 0) {
+        lastHeaderWidth = currentWidth;
+        return;
+      }
+      lastHeaderWidth = currentWidth;
+
+      const wasOpen = siteMenu.matches(":popover-open") || siteMenu.classList.contains(":popover-open");
+      header.classList.add("is-measuring", "is-wide");
+      const fitsInline = headerInner.scrollWidth <= headerInner.clientWidth;
+
+      if (fitsInline) {
+        siteMenu.removeAttribute("popover");
+      } else {
+        header.classList.remove("is-wide");
+        siteMenu.setAttribute("popover", "auto");
+        if (wasOpen && typeof siteMenu.showPopover === "function") {
+          try {
+            siteMenu.showPopover();
+          } catch {}
+        }
+      }
+
+      requestAnimationFrame(() => {
+        header.classList.remove("is-measuring");
+      });
+    }
+
+    syncNavbarLayout();
+    if ("ResizeObserver" in window && header && siteMenu) {
+      const navObserver = new ResizeObserver(() => syncNavbarLayout());
+      navObserver.observe(header);
+      navObserver.observe(siteMenu);
+    }
+
+    siteMenu?.addEventListener("click", (event) => {
+      if (event.target.closest("a") && siteMenu.hasAttribute("popover") && typeof siteMenu.hidePopover === "function") {
+        try {
+          siteMenu.hidePopover();
+        } catch {}
+      }
+    });
+
+    // Interactive System Filter + Empty State (R-27)
+    const filterButtons = document.querySelectorAll("[data-filter]");
+    const searchInput = document.getElementById("system-search");
+    const systemEntries = document.querySelectorAll(".system-entry");
+    const emptyBox = document.getElementById("systems-empty");
+    const resetFilterBtn = document.getElementById("reset-filter-btn");
+    let activeCategory = "all";
+
+    function applySystemFilter() {
+      const query = (searchInput?.value ?? "").trim().toLowerCase();
+      let visibleCount = 0;
+
+      for (const entry of systemEntries) {
+        const tags = (entry.dataset.tags ?? "").split(/\s+/);
+        const haystack = `${entry.dataset.keywords ?? ""} ${entry.textContent ?? ""}`.toLowerCase();
+        const matchesCat = activeCategory === "all" || tags.includes(activeCategory);
+        const matchesQuery = !query || haystack.includes(query);
+        const show = matchesCat && matchesQuery;
+        entry.hidden = !show;
+        if (show) visibleCount += 1;
+      }
+
+      if (emptyBox) {
+        emptyBox.hidden = visibleCount > 0;
+      }
+    }
+
+    for (const btn of filterButtons) {
+      btn.addEventListener("click", () => {
+        activeCategory = btn.dataset.filter ?? "all";
+        for (const peer of filterButtons) {
+          peer.setAttribute("aria-pressed", String(peer === btn));
+        }
+        applySystemFilter();
+      });
+    }
+
+    searchInput?.addEventListener("input", applySystemFilter);
+
+    resetFilterBtn?.addEventListener("click", () => {
+      activeCategory = "all";
+      if (searchInput) searchInput.value = "";
+      for (const btn of filterButtons) {
+        btn.setAttribute("aria-pressed", String(btn.dataset.filter === "all"));
+      }
+      applySystemFilter();
+      searchInput?.focus();
+    });
+
+    // Copy email action with accessible status feedback
+    const copyBtn = document.getElementById("copy-email-btn");
+    const copyFeedback = document.getElementById("copy-feedback");
+    copyBtn?.addEventListener("click", async () => {
+      const email = "salim.moustanir@gmail.com";
+      const isEn = htmlEl.dataset.lang === "en";
+      try {
+        await navigator.clipboard.writeText(email);
+        if (copyFeedback) {
+          copyFeedback.textContent = isEn
+            ? "Copied: salim.moustanir@gmail.com"
+            : "Kopiert: salim.moustanir@gmail.com";
+        }
+      } catch {
+        if (copyFeedback) {
+          copyFeedback.textContent = email;
+        }
+      }
+    });
+
+    // Live GitHub Public Repo Strip with Loading, Empty, and Error + Retry states (R-27)
+    const ghLoading = document.getElementById("gh-loading");
+    const ghEmpty = document.getElementById("gh-empty");
+    const ghError = document.getElementById("gh-error");
+    const ghGrid = document.getElementById("gh-grid");
+    const ghRetry = document.getElementById("gh-retry");
+
+    async function loadGitHubRepos() {
+      if (!ghLoading || !ghEmpty || !ghError || !ghGrid) return;
+      ghLoading.hidden = false;
+      ghEmpty.hidden = true;
+      ghError.hidden = true;
+      ghGrid.hidden = true;
+      ghGrid.replaceChildren();
+
+      try {
+        const res = await fetch("https://api.github.com/users/salimmous/repos?sort=updated&per_page=18", {
+          headers: { Accept: "application/vnd.github+json" }
+        });
+        if (!res.ok) throw new Error(`HTTP ${res.status}`);
+        const repos = await res.json();
+        const curated = (Array.isArray(repos) ? repos : [])
+          .filter((r) => r && !r.fork && !r.private && r.name !== "salimmous")
+          .slice(0, 6);
+
+        ghLoading.hidden = true;
+        if (curated.length === 0) {
+          ghEmpty.hidden = false;
+          return;
+        }
+
+        for (const repo of curated) {
+          const card = document.createElement("div");
+          card.className = "gh-repo";
+
+          const link = document.createElement("a");
+          link.href = repo.html_url;
+          link.target = "_blank";
+          link.rel = "noopener noreferrer";
+          link.textContent = repo.name;
+
+          const desc = document.createElement("div");
+          desc.style.fontSize = "0.875rem";
+          desc.textContent = repo.description || (htmlEl.dataset.lang === "en" ? "Source repository on GitHub" : "Quellcode-Repository auf GitHub");
+
+          const meta = document.createElement("div");
+          meta.className = "gh-meta";
+          const parts = [];
+          if (repo.language) parts.push(repo.language);
+          if (typeof repo.stargazers_count === "number" && repo.stargazers_count > 0) {
+            parts.push(`${repo.stargazers_count} Stars`);
+          }
+          meta.textContent = parts.join(" · ") || "GitHub";
+
+          card.append(link, desc, meta);
+          ghGrid.append(card);
+        }
+        ghGrid.hidden = false;
+      } catch {
+        ghLoading.hidden = true;
+        ghError.hidden = false;
+      }
+    }
+
+    ghRetry?.addEventListener("click", () => {
+      loadGitHubRepos();
+    });
+
+    loadGitHubRepos();
+  </script>
+</body>
+</html>
