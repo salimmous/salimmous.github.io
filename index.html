@@ -1107,20 +1107,20 @@
             <h2 data-de>Ausgewählte Plattformen &amp; Open Source</h2>
             <h2 data-en>Selected Production Platforms &amp; Open Source</h2>
           </div>
-          <p class="muted" style="margin:0" data-de>Fünf reale Systeme mit dokumentiertem Produktionsumfang.</p>
-          <p class="muted" style="margin:0" data-en>Five shipped systems with documented production scope.</p>
+          <p class="muted" style="margin:0" data-de>Sechs reale Systeme mit dokumentiertem Produktionsumfang.</p>
+          <p class="muted" style="margin:0" data-en>Six shipped systems with documented production scope.</p>
         </div>
 
         <div class="filter-bar">
           <div class="filter-chips" role="group" aria-label="Stack Filter">
             <button type="button" class="chip-btn" data-filter="all" aria-pressed="true">
-              <span data-de>Alle (5)</span>
-              <span data-en>All (5)</span>
+              <span data-de>Alle (6)</span>
+              <span data-en>All (6)</span>
             </button>
             <button type="button" class="chip-btn" data-filter="laravel" aria-pressed="false">Laravel / PHP</button>
             <button type="button" class="chip-btn" data-filter="react" aria-pressed="false">React / TypeScript</button>
             <button type="button" class="chip-btn" data-filter="ecommerce" aria-pressed="false">APIs &amp; E-Commerce</button>
-            <button type="button" class="chip-btn" data-filter="swift" aria-pressed="false">Swift / macOS</button>
+            <button type="button" class="chip-btn" data-filter="swift" aria-pressed="false">Swift / iOS &amp; macOS</button>
           </div>
 
           <div class="search-wrap">
@@ -1133,7 +1133,7 @@
               class="search-input"
               type="search"
               autocomplete="off"
-              placeholder="Laravel, MySQL, Webhook, Swift..."
+              placeholder="Laravel, SwiftUI, Django, MySQL..."
             >
           </div>
         </div>
@@ -1180,7 +1180,52 @@
             </div>
           </article>
 
-          <!-- 02.2: Insurio -->
+          <!-- Flagship 02.2: Wazen -->
+          <article class="system-entry system-flagship" data-tags="swift" data-keywords="wazen nutrition meal vision diabetes cgm fitness ios swiftui watchos widgetkit healthkit android kotlin jetpack compose health connect django drf postgresql redis celery cloudflare workers typescript ai arabic">
+            <div>
+              <div class="system-top">
+                <h3>Wazen · وازن</h3>
+                <span class="system-metric">
+                  <span data-de>App Store · Google Play · 5 Sprachen</span>
+                  <span data-en>App Store · Google Play · 5 Locales</span>
+                </span>
+              </div>
+              <p data-de>
+                Produktive KI-Plattform für Ernährung, Mahlzeiten-Analyse per Kamera, Diabetes-/CGM-Tracking und Fitness auf iOS (v2.0.2), watchOS, Android (v7.9) und Web (wazenai.com) — umgesetzt vom nativen Client-UI bis zu Backend-Queues und Edge-AI-Gateway in 5 Sprachen (AR RTL, EN, FR, DE, ES).
+              </p>
+              <p data-en>
+                Shipped cross-platform AI nutrition, meal-vision, diabetes CGM, and fitness platform live on the App Store (iOS v2.0.2), watchOS, Google Play (Android v7.9), and Web (wazenai.com) — engineered across native mobile clients, backend ingestion queues, and an edge AI gateway in 5 locales (AR RTL, EN, FR, DE, ES).
+              </p>
+              <div class="system-links">
+                <a href="https://github.com/salimmous/Wazen-Showcase" target="_blank" rel="noopener noreferrer">
+                  <span data-de>Architektur &amp; Showcase (GitHub)</span>
+                  <span data-en>Architecture &amp; Showcase (GitHub)</span>
+                </a>
+                <a href="https://wazenai.com" target="_blank" rel="noopener noreferrer">wazenai.com</a>
+                <a href="https://apps.apple.com/app/wazen-%D9%88%D8%A7%D8%B2%D9%86/id6760981534" target="_blank" rel="noopener noreferrer">App Store</a>
+                <a href="https://play.google.com/store/apps/details?id=com.wazen.health.wazen_app" target="_blank" rel="noopener noreferrer">Google Play</a>
+              </div>
+            </div>
+            <div>
+              <p class="muted" data-de>
+                Schwerpunkte der Umsetzung: multimodale Foto-, Sprach- &amp; Barcode-Erkennung (GTIN, CameraX/ML Kit, AVFoundation), CGM-Blutzucker-Hub (Apple HealthKit &amp; Android Health Connect, Fasten-/Ramadan-Modus), Django-5-/DRF-API mit PostgreSQL und Redis/Celery, Cloudflare Workers AI-Gateway (TypeScript) sowie 875+ Übungen.
+              </p>
+              <p class="muted" data-en>
+                Engineering scope: multimodal meal vision, voice coach, and GTIN barcode scanning (CameraX/ML Kit, AVFoundation), diabetes CGM hub synced with Apple HealthKit &amp; Android Health Connect, Django 5 + DRF API with PostgreSQL and Redis/Celery queues, Cloudflare Workers AI gateway (TypeScript), and 875+ illustrated exercises.
+              </p>
+              <ul class="stack-list" aria-label="Wazen Stack">
+                <li>SwiftUI / watchOS</li>
+                <li>Kotlin / Compose</li>
+                <li>Django 5 / DRF</li>
+                <li>PostgreSQL</li>
+                <li>Redis / Celery</li>
+                <li>Cloudflare Workers (TS)</li>
+                <li>HealthKit / Health Connect</li>
+              </ul>
+            </div>
+          </article>
+
+          <!-- 02.3: Insurio -->
           <article class="system-entry" data-tags="laravel" data-keywords="insurio saas crm multi-tenant laravel livewire mysql insurance versicherung">
             <div class="system-top">
               <h3>Insurio</h3>
@@ -1277,10 +1322,10 @@
         <!-- R-27 Empty state for system filter -->
         <div class="state-box" id="systems-empty" role="status" hidden>
           <p style="margin:0" data-de>
-            Kein System passt zur aktuellen Auswahl oder Suche. Setzen Sie den Filter zurück, um wieder alle 5 produktiven Projekte anzuzeigen.
+            Kein System passt zur aktuellen Auswahl oder Suche. Setzen Sie den Filter zurück, um wieder alle 6 produktiven Projekte anzuzeigen.
           </p>
           <p style="margin:0" data-en>
-            No system matches the active category or search query. Reset the filter to display all 5 production projects again.
+            No system matches the active category or search query. Reset the filter to display all 6 production projects again.
           </p>
           <button type="button" class="btn-control" id="reset-filter-btn">
             <span data-de>Filter zurücksetzen</span>
